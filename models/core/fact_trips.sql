@@ -21,6 +21,7 @@ with
             stg_green_tripdata.total_amount,
             stg_green_tripdata.payment_type,
             stg_green_tripdata.payment_type_descripted,
+            stg_green_tripdata.imp_surcharge,
             'Green' as service_type
         from {{ ref("stg_green_tripdata") }}
     ),
@@ -44,6 +45,7 @@ with
             stg_staging__yellow_tripdata.total_amount,
             stg_staging__yellow_tripdata.payment_type,
             stg_staging__yellow_tripdata.payment_type_descripted,
+            stg_staging__yellow_tripdata.imp_surcharge,
             'Yellow' as service_type
         from {{ ref("stg_staging__yellow_tripdata") }}
     ),
@@ -77,7 +79,9 @@ select
     trips_unioned.tolls_amount,
     trips_unioned.total_amount,
     trips_unioned.payment_type,
-    trips_unioned.payment_type_descripted
+    trips_unioned.payment_type_descripted,
+    trips_unioned.service_type,
+    trips_unioned.imp_surcharge
 from trips_unioned
 inner join
     dim_zones as pickup_zone
