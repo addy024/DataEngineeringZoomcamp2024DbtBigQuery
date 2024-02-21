@@ -1,5 +1,4 @@
-Welcome to your new dbt project!
-
+DeZoomcamp Ny Taxi Project
 ### Using the starter project
 
 Try running the following commands:
